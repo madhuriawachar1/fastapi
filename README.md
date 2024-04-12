@@ -1,115 +1,23 @@
-#open CMD
-#open folder where your main.py is located
-#run uvicorn main:app --reload
-Last login: Thu Feb 29 14:02:04 on ttys000
-(base) madhuriawachar@Madhuris-Air-7 ~ % activate fastapi
+# Chhalaang 2.0 - Grand Finale by METAMORPH
 
-EnvironmentNameNotFound: Could not find conda environment: fastapi
-You can list all discoverable environments with `conda info --envs`.
-
-
-(base) madhuriawachar@Madhuris-Air-7 ~ % conda info --envs
-# conda environments:
-#
-                         /Users/madhuriawachar/micromamba/envs/tf
-base                  *  /Users/madhuriawachar/miniconda3
-tensorflow               /Users/madhuriawachar/miniconda3/envs/tensorflow
-
-(base) madhuriawachar@Madhuris-Air-7 ~ % conda info --envs
-# conda environments:
-#
-                         /Users/madhuriawachar/micromamba/envs/tf
-base                  *  /Users/madhuriawachar/miniconda3
-fastapi_env              /Users/madhuriawachar/miniconda3/envs/fastapi_env
-tensorflow               /Users/madhuriawachar/miniconda3/envs/tensorflow
-
-(base) madhuriawachar@Madhuris-Air-7 ~ % ls
-Applications
-Desktop
-Documents
-Downloads
-Figure_1.png
-Figure_14.png
-Kmeans_iris data.png
-Library
-Licence microsoft.pdf
-Licence.pdf
-ML
-Movies
-MtechThesis
-Music
-Pictures
-Public
-ReadMe.pdf
-bias_var_reg.png
-dataset_snake_vs_monkey
-es654-spring2023-assignment2-madhuri_akbar
-github-classroom
-metrics.py
-micromamba
-miniconda3
-ml assignment
-nltk_data
-norm_deg for 4.png
-teach-ds-course-website
-tree
-try4.py
-venv
-withcls4.png
-(base) madhuriawachar@Madhuris-Air-7 ~ % cd Documents
-(base) madhuriawachar@Madhuris-Air-7 Documents % ls
--Differential-Privacy-to-Matrix-Factorization
-2008.01916.pdf
-M
-Machine_Learning_Madhuri
-Madhuri_Awachar(22210023) (1).pdf
-Madhuri_Awachar(22210023).pdf
-Mid sem - Madhuri (1).docx
-Mid sem - Madhuri (2).docx
-Mid sem - Madhuri copy.docx
-Mid sem - Madhuri.docx
-Mid sem - Madhuri.pdf
-NLP-Natural-language-Processing-
-New Folder With Items
-New Folder With Items 2
-Private reccomadation system
-SS
-Text-to-Image Generation and Text-and-Shape Guided 3D Human Avatar Generation
-WhatsApp Image 2023-03-19 at 3.03.59 AM.jpeg
-Zoom
-assignment-4-akbar_madhuri-main
-assignment-4-akbar_madhuri-main.zip
-assignment1
-assignment2
-assignment5-sai-krishna-madhuri
-assignment5_madhuri
-cpp_practice
-es654-spring2023-assignment2-madhuri_akbar
-fastapi
-federated learning
-python
-thirdai
-(base) madhuriawachar@Madhuris-Air-7 Documents % cd fastapi
-(base) madhuriawachar@Madhuris-Air-7 fastapi % uvicorn main:app --reload
-INFO:     Will watch for changes in these directories: ['/Users/madhuriawachar/Documents/fastapi']
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [38836] using StatReload
-INFO:     Started server process [38840]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     127.0.0.1:62165 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62178 - "GET /welcome HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:62206 - "GET /docs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62206 - "GET /openapi.json HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62215 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62217 - "GET /Welcome?name=Madhuri HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62219 - "GET /Welcome?name=Madhuri HTTP/1.1" 200 OK
+# problem statement
 
 
 
-#dataset
-https://www.kaggle.com/code/shubhamlipare/credit-card-fraud-detection-supervised-ml
+Theme: Open Innovation
 
+Overview: Investors across the globe face the challenge of sifting through a vast amount of stock market data to find stocks aligned with their goals. They seek tools that make this search more efficient and boost their confidence in their investment decisions Hence, stock screening is an essential tool for investors to identify potential investment opportunities based on specific criteria. Traditional stock screeners provide basic functionalities, but there's a growing demand for more advanced, customizable, and user-friendly solutions. Develop a stock screener application that allows users to efficiently filter and analyze stocks based on various criteria, such as price, market capitalization, volume, technical indicators, fundamental metrics, and more. The goal is to provide investors with a comprehensive tool to identify promising investment opportunities that match their unique investment strategies and preferences.
 
-implementation:
-https://github.com/shivam1808/Credit-Card-Fraud-Detection/blob/master/Anamoly%20Detection.ipynb
+Tech Stack: Open to all
+
+Exact Tasks: Develop a mobile/web application that enables users to experience the following features:-
+
+User-friendly Interface (Mandatory): Design an intuitive and user-friendly mobile/web application that allows users to easily navigate the application, customize filters, view search results, analyze stocks, and make informed investment decisions. Consider usability, accessibility, and visual appeal in the design.
+Fundamental Analysis (Mandatory): Provide access to fundamental data and analysis, such as financial ratios, earnings reports, revenue growth, profit margins, and other key fundamental indicators. Allow users to screen stocks based on fundamental criteria important to their investment strategies.
+Customizable Filters (Mandatory): Enable users to define and customize filters based on various criteria, including price, volume, volatility, technical indicators (e.g., moving averages, RSI), fundamental metrics (e.g., P/E ratio, EPS), sector, industry, market cap, and more.
+Advanced Technical Analysis (Good to have): Incorporate advanced technical analysis tools and indicators to help users identify trends, patterns, and signals in stock price movements. Examples include Bollinger Bands, MACD, Stochastic Oscillator, and Fibonacci retracements.
+Real-time Data (Bonus): Integrate real-time or near-real-time data feeds to ensure users can access the latest market data and information. This includes real-time stock prices, volume, news updates, and other relevant market data.
+Submission Format:
+
+A PPT comprising the flow of the application they have developed and the approach used to build the system along with a detailed explanation of the technology stack used.
+Zip file comprising source code of the corresponding backend & frontend utilities developed, along with a guide comprising a comprehensive set of instructions to run the application.

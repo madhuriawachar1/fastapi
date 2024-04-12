@@ -1,0 +1,62 @@
+from pydantic import BaseModel
+
+
+class Transaction(BaseModel):
+    mti: str
+    processingCode: str
+    transactionAmount: float
+    dateTimeTransaction: str
+    cardholderBillingConversionRate: str
+    stan: str
+    timeLocalTransaction: str
+    dateLocalTransaction: str
+    expiryDate: str
+    conversionDate: str
+    merchantCategoryCode: int
+    posEntryMode: str
+    acquiringInstitutionCode: str
+    forwardingInstitutionCode: str
+    rrn: str
+    cardAcceptorTerminalId: str
+    cardAcceptorId: str
+    cardAcceptorNameLocation: str
+    cardBalance: float
+    additionalData48: str
+    transactionCurrencyCode: str
+    cardholderBillingCurrencyCode: str
+    posDataCode: str
+    originalDataElement: str
+    channel: str
+    encryptedPan: str
+    network: str
+    dcc: bool
+    kitNo: str
+    factorOfAuthorization: int
+    authenticationScore: int
+    contactless: bool
+    international: bool
+    preValidated: bool
+    enhancedLimitWhiteListing: bool
+    transactionOrigin: str
+    transactionType: str
+    isExternalAuth: bool
+    encryptedHexCardNo: float
+    isTokenized: bool
+    entityId: str
+    moneySendTxn: bool
+    mcRefundTxn: bool
+    mpqrtxn: bool
+    authorisationStatus: bool
+    latitude: float
+    longitude: float
+    '''encryptedHexCardNo: float
+    merchantCategoryCode:      int
+    transactionAmount:       float
+    latitude:                float
+    longitude :              float
+    cardBalance:             float
+    year:                      int
+    month:                     int
+    day_name:                     int
+    hour:                      int
+    '''

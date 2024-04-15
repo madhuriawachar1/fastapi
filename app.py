@@ -14,14 +14,14 @@ app = FastAPI()
 # 3. Index route, opens automatically on http://127.0.0.1:8000
 @app.get('/')
 def index():
-    return {'message': 'Hello, World'}
+    return {'message': 'Welcome to Real-Time Fraud Detection API by Madhuri'}
 
 # 4. Route with a single parameter, returns the parameter within a message
 #    Located at: http://127.0.0.1:8000/AnyNameHere
-@app.get('/{name}')
+'''@app.get('/{name}')
 def get_name(name: str):
     return {'Welcome To Krish Youtube Channel': f'{name}'}
-
+'''
 # 3. Expose the prediction functionality, make a prediction from the passed
 #    JSON data and return the predicted Bank Note with the confidence
 def load_transactions(filename):
@@ -37,10 +37,13 @@ def get_past_transactions(data, card_no):
 
     # Sort the transactions by dateTimeTransaction
     sorted_transactions = filtered_data.sort_values('dateTimeTransaction')
-
+    print(sorted_transactions)
+    print(sorted_transactions.columns)
+    print(sorted_transactions['dateTimeTransaction'])
+    print(type(sorted_transactions))
     return sorted_transactions
 @app.post('/predict')
-def predict_banknote(data:Transaction):
+def predict_transaction(data:Transaction):
     transaction_dict = data.model_dump()
     encryptedHexCardNo = transaction_dict['encryptedHexCardNo']
     merchantCategoryCode = transaction_dict['merchantCategoryCode']
@@ -49,35 +52,49 @@ def predict_banknote(data:Transaction):
     longitude = transaction_dict['longitude']
     cardBalance = transaction_dict['cardBalance']
     dateTimeTransaction=transaction_dict['dateTimeTransaction']
-    new_format = '%Y-%m-%d %H:%M:%S'
+    dateyr=dateTimeTransaction[4:8]
     
-    threshold_amount = 0.70 * cardBalance
-    '''
+    format2=dateyr+"-"+dateTimeTransaction[2:4]+"-"+dateTimeTransaction[0:2]+" "+dateTimeTransaction[8:10]+":"+dateTimeTransaction[10:12]+":"+'00'
+   # date_int1=int(dateTimeTransaction)
+    #convert into suitable format
+    # Convert string to datetime
+    
+    date_obj = datetime.strptime(format2, '%Y-%m-%d %H:%M:%S')
+   
+    
+    
+    
     #RULE-001
     # Calculate 70% of the card balance
-    
+    threshold_amount = 0.70 * cardBalance
     dd=pd.read_csv('modified_dfv3-1_filtered.csv')
     past_transactions=get_past_transactions(dd, encryptedHexCardNo)
-    # Filter past transactions within the last 12 hours
-    time_limit = new_date_str - timedelta(hours=12)
-
-# Now filter the transactions
-    recent_transactions = [
-        txn for txn in past_transactions
-        if datetime.strptime(txn['dateTimeTransaction'], '%Y-%m-%d %H:%M:%S') > time_limit
-    ]
+       
     
+    # Filter past transactions within the last 12 hours
+    time_limit = pd.Timestamp(date_obj - timedelta(hours=12))
+    print(type(time_limit))
+    #Name: dateTimeTransaction, dtype: datetime64[ns]
+# Now filter the transactions
+    recent_transactions = past_transactions[past_transactions['dateTimeTransaction'] > time_limit]
+
     # Sum the amounts of these transactions
-    total_amount = sum(txn['transactionAmount'] for txn in recent_transactions) + transactionAmount
-'''
+    total_amount = recent_transactions['transactionAmount'].sum() + transactionAmount
+
     # Check the rule condition: Total amount >= 70% of balance and balance >= 3,00,000
-    if  transactionAmount>= threshold_amount :
-        return {
-        'prediction': "rule 001"
+    if total_amount >= threshold_amount and cardBalance >= 300000:
+        response = {
+        "status": "ALERT",
+        "ruleViolated": ["RULE-001"],  # Add other rule codes if other rules are checked and violated
+        "timestamp": str(int(datetime.now().timestamp()))  # Unix timestamp as a string
     }
-    return {
-        'prediction': "hello"
+    else:
+        response = {
+        "status": "OK",
+        #"ruleViolated": ["rule2"],  # No rules violated
+        "timestamp": str(int(datetime.now().timestamp()))  # Unix timestamp as a string
     }
+    return response
 
 # 5. Run the API with uvicorn
 #    Will run on http://127.0.0.1:8000
